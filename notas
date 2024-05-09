@@ -1,0 +1,34 @@
+
+
+
+
+
+
+<!--    Obtner Todo -->
+    <h1>Listado de Empresas</h1>
+
+    @if(count($Nombre) > 0)
+        <ul>
+            @foreach($Nombre as $empresa)
+                <li>{{ $empresa->Nombre }}</li>
+                <!-- Agrega más detalles de la empresa según sea necesario -->
+            @endforeach
+        </ul>
+    @else
+        <p>No se encontraron empresas.</p>
+    @endif
+
+
+<!--  **
+*buscar por id
+-->
+
+<h1> Busqueda exitosa </h1>
+
+
+@if(isset($Nombre) && !empty($Nombre))
+  <p>Nombre: {{ $Nombre->Nombre }}</p>
+@else
+    <p>No se encontró ninguna empresa.</p>
+@endif
+
