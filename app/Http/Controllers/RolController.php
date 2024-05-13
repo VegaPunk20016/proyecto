@@ -7,8 +7,9 @@ use App\Models\roles;
 
 class RolController extends Controller
 {
-    public function delRol($id)
+    public function delRol(Request $request)
     {
+        $id = $request -> input('id');
         if ($id != null) {
             $rol = roles::find($id);
             if ($rol != null) {
@@ -59,8 +60,9 @@ class RolController extends Controller
     }
 
 
-    public function showbyid($id)
+    public function showbyid(Request $request)
     {
+        $id = $request -> input('id');
         if ($id != null) {
             $rol = roles::findorfail($id);
             if ($rol != null) {

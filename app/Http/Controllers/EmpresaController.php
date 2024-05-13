@@ -11,8 +11,9 @@ use SebastianBergmann\CodeUnitReverseLookup\Wizard;
 class EmpresaController extends Controller
 {
 
-    public function borrar($id)
+    public function borrar(Request $request)
     {
+        $id = $request -> input('id');
         if ($id != null) {
             $empresa = Empresa::find($id);
             if (!$empresa) {
@@ -28,10 +29,12 @@ class EmpresaController extends Controller
 
     public function consultaporid(Request $request)
     {
-        if ($request != null) {
-            if ($empresa = Empresa::find($request->input('id')) != null) {
+        $id = $request -> input('id');
+        if ($id) {
+            $empresa = Empresa::find($id);
+            if ($empresa != null) {
                 try {
-                    return response()->json(['Nombre' => $empresa]);
+                    return response()->json([$empresa]);
                 } catch (\Throwable $th) {
                     return response()->json(['error' => $th->getMessage()], 500);
                 }
@@ -47,7 +50,8 @@ class EmpresaController extends Controller
     public function consultapornombre(Request $request)
     {
         if ($request != null) {
-            if ($empresa = empresa::find($request->input('nombre')) != null) {
+            $empresa = empresa::find($request->input('nombre'));
+            if ($empresa != null) {
                 try {
                     return response()->json(['Nombre' => $empresa]);
                 } catch (\Throwable $th) {
@@ -94,8 +98,9 @@ class EmpresaController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
+
         if ($id != null) {
             $empresa = Empresa::FindOrFail($id);
             if ($empresa->id != null) {
