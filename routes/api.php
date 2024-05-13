@@ -63,3 +63,9 @@ Route::post('/login', [userController::class, 'login'])->name('login');
 Route::post('/registro', [userController::class, 'register'])->name('registro');
 
 Route::post('/logout',[userController::class, 'logout'])->name('logout');
+
+Route::delete('/deleteAccount', [userController::class, 'delete'])->name('logout');
+
+
+
+
